@@ -23,7 +23,8 @@ const http = 'http';
 
 bool isLocalFilePath(String path) {
   Uri uri = Uri.parse(path);
-  return !uri.scheme.contains(http);
+
+  return !uri.scheme.startsWith(http);
 }
 
 bool isVideo(String path) =>
