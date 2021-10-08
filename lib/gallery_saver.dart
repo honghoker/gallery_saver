@@ -56,12 +56,12 @@ class GallerySaver {
     if (path.isEmpty) {
       throw ArgumentError(pleaseProvidePath);
     }
-    if (!isImage(path)) {
-      throw ArgumentError(fileIsNotImage);
-    }
     if (!isLocalFilePath(path)) {
       tempFile = await _downloadFile(path, headers: headers);
       path = tempFile.path;
+    }
+    if (!isImage(path)) {
+      throw ArgumentError(fileIsNotImage);
     }
 
     bool? result = await _channel.invokeMethod(
