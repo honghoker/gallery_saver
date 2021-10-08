@@ -59,8 +59,7 @@ class GallerySaver {
     if (!isLocalFilePath(path)) {
       tempFile = await _downloadFile(path, headers: headers);
       path = tempFile.path;
-    }
-    if (!isImage(path)) {
+    } else if (!isImage(path)) {
       throw ArgumentError(fileIsNotImage);
     }
 
